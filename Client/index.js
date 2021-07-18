@@ -1,9 +1,10 @@
 const ipcRenderer = require('electron').ipcRenderer;
 
-window.onload = function(){
-    
+window.onload = function() {
+    ipcRenderer.on("uuid", (event, data) => {
+        document.getElementById("code").innerHTML = data;
+    })
 }
-
 
 function startShare(){
     ipcRenderer.send("start-share", {});
